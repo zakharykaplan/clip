@@ -42,6 +42,7 @@ private:
     std::vector<std::string> flags;
     std::vector<std::string> opts;
     std::vector<std::string> args;
+    bool autohelp;
 
 public:
     // ctors

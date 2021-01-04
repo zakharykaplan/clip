@@ -29,7 +29,11 @@ namespace clip {
 
 // class Parser
 // ctors
-Parser::Parser(int argc, char *argv[], const App &app) : argc(argc - 1), argv(&argv[1]), app(app) {}
+Parser::Parser(int argc, char *argv[], const App &app) :
+    argc(argc - 1),
+    argv(&argv[1]),
+    app(app),
+    autohelp(true) {}
 
 // builders
 Parser &Parser::add(const Flag &flag) {
@@ -58,6 +62,9 @@ Parser &Parser::add(const Arg<T> &arg) {
         // Append name to args
         this->args.push_back(arg.name);
     }
+    // Update autohelp
+    if (this->autohelp && !arg.optional())
+        this->autohelp = false;
     return *this;
 }
 
@@ -94,6 +101,12 @@ void Parser::parse() {
     bool doneopts = false;
     // Keep track of the next positional arg
     std::size_t argidx = 0;
+
+    // Show help if no arguments supplied
+    if (!this->argc && this->autohelp) {
+        std::cout << this->help_s();
+        std::exit(1);
+    }
 
     // Parse each argument
     for (int i = 0; i < this->argc; i++) {
