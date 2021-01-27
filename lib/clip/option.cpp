@@ -5,6 +5,8 @@
 //  Created by Zakhary Kaplan on 2020-12-23.
 //  Copyright © 2020 Zakhary Kaplan. All rights reserved.
 //
+//  SPDX-License-Identifier: MIT
+//
 
 #include "clip/option.h"
 

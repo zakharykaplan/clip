@@ -5,6 +5,8 @@
 //  Created by Zakhary Kaplan on 2021-01-03.
 //  Copyright © 2020 Zakhary Kaplan. All rights reserved.
 //
+//  SPDX-License-Identifier: MIT
+//
 
 #include <chrono>
 #include <iostream>
